@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .traffic-light {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            border:10 solid;
+            width: 150px;
+            height: 350px;
+            background-color: black;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px;
+        }
+
+        .red { background-color: red; }
+        .yellow { background-color: yellow; }
+        .green { background-color: green; }
+    </style>
+    <title>Traffic Light</title>
+</head>
+<body>
+<h1>YOU DO NOT NEED TO PRESS THE BUTTONS!</h1>
+<div class="traffic-light">
+    <div id="redLight" class="circle"></div>
+    <div id="yellowLight" class="circle"></div>
+    <div id="greenLight" class="circle"></div>
+</div>
+
+<div class="controls">
+    <button onclick="activateRed()">Red</button>
+    <button onclick="activateRedAndYellow()">Red and Yellow</button>
+    <button onclick="activateYellow()">Yellow</button>
+    <button onclick="activateGreen()">Green</button>
+</div>
+
+<script>
+    function activateRed() {
+        document.getElementById("greenLight").style.backgroundColor = "";
+        document.getElementById("redLight").style.backgroundColor = "red";
+    }
+    function activateRedAndYellow() {
+        document.getElementById("greenLight").style.backgroundColor = "";
+        document.getElementById("redLight").style.backgroundColor = "red";
+        document.getElementById("yellowLight").style.backgroundColor = "yellow";
+    }
+    function activateYellow() {
+        document.getElementById("greenLight").style.backgroundColor = "";
+        document.getElementById("redLight").style.backgroundColor = "";
+        document.getElementById("yellowLight").style.backgroundColor = "yellow";
+    }
+    function activateGreen() {
+        document.getElementById("redLight").style.backgroundColor = "";
+        document.getElementById("yellowLight").style.backgroundColor = "";
+        document.getElementById("greenLight").style.backgroundColor = "green";
+    }
+
+    setInterval(function() {
+        activateRed();
+        activateRedAndYellow();
+        activateGreen();
+        
+        setTimeout(activateRed, 2000);                
+        setTimeout(activateRedAndYellow, 4000);      
+        setTimeout(activateYellow, 6000);             
+        setTimeout(activateGreen, 8000);            
+    }, 10000);
+</script>
+
+</body>
+</html>
